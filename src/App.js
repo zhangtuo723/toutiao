@@ -1,6 +1,6 @@
+import './App.scss'
 export default function App() {
-  return (
-    <div>App ttt</div>
-    
-  )
+  return <div className='aa'>
+sdf
+  </div>
 }
