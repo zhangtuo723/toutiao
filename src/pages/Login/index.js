@@ -1,13 +1,40 @@
 import React from "react";
-import Icon from "@/components/icon";
-import './index.scss'
-export default function Login() {
+import NavBar from "@/components/NavBar";
+import sytles from './index.module.scss'
+import Input from '@/components/Input'
+export default function Login(props) {
+
+  const onExtraClick = ()=>{
+    console.log(1);
+  }
+ 
+  
   return (
-    <div>
-      <h1>我是登录</h1>
-      {/* <Icon type={"icon-mianxingfeizhunan"} className='big'></Icon> */}
-      {/* 这是个组件不是标签，没有事件委托 */}
-      <Icon type={"iconfanhui"} className='big' onClick={()=>{alert('hahah')}}></Icon>
+    <div className={sytles.root}>
+      {/* 导航栏 */}
+      <NavBar>登录</NavBar>
+     {/* 内容 */}
+     <div className="content" >
+     <h3>短信登录</h3>
+        <form>
+          <div className="input-item">
+          <Input placeholder='请输入手机号' extra='获取验证吗' onExtraClick={onExtraClick}></Input>
+          <div className="validate">验证码错误</div>
+          </div>
+          <div className="input-item">
+          <Input></Input>
+          <div className="validate">验证码错误</div>
+          </div>
+        
+          
+          <button type="submit" className="login-btn">
+            登录
+          </button>
+
+        </form>
+
+     </div>
+     
     </div>
   );
 }

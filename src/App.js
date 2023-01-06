@@ -6,6 +6,7 @@ const Login = React.lazy(()=>import('@/pages/Login'))
 const Home = React.lazy(()=>import('@/pages/Home'))
 // import Login from '@/pages/Login'
 // import Home from '@/pages/Home'
+
 export default function App() {
   return <Router>
     {/* <Link to='/login'>登录</Link>
@@ -15,7 +16,7 @@ export default function App() {
     <Routes>
 
     <Route exact path='/' element={<Home></Home>}></Route>
-    <Route  path='/login' element={<Login/>}></Route>
+    <Route  path='/login' element={<Login/>} ></Route>
     <Route  path='/home' element={<Home/>}></Route>
     </Routes>
     </Suspense>
