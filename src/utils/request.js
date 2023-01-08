@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {Toast}from 'antd-mobile'
+import { getTokenInfo } from './storage'
 // 1. 创建新的 axios 实例
 const http = axios.create({
   baseURL: 'http://geek.itheima.net/v1_0',
@@ -8,6 +9,13 @@ const http = axios.create({
 
 // 2. 设置请求拦截器和响应拦截器
 http.interceptors.request.use(config => {
+
+  const token = getTokenInfo().token
+  if(token){
+    config.headers['Authorization'] = 'Bearer '+token
+  }
+  console.log(config);
+  
   return config
 })
 

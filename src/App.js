@@ -3,7 +3,7 @@ import React,{Suspense} from 'react'
 
 
 const Login = React.lazy(()=>import('@/pages/Login'))
-const Home = React.lazy(()=>import('@/pages/Home'))
+const Home = React.lazy(()=>import('@/pages/Layout'))
 // import Login from '@/pages/Login'
 // import Home from '@/pages/Home'
 
