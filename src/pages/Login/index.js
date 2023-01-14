@@ -27,12 +27,18 @@ import { Toast } from "antd-mobile";
 // };
 import { useDispatch } from "react-redux";
 import { login, sendCode } from "@/store/action/login";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Login(props) {
   const [time, setTime] = useState(0);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation()
+
+
+
+
+
   const onExtraClick = async () => {
     if (time > 0) {
       return;
@@ -65,7 +71,7 @@ export default function Login(props) {
 
   const formik = useFormik({
     initialValues: {
-      mobile: "13111111111",
+      mobile: "13911111111",
       code: "246810",
     },
     // validate,
@@ -83,7 +89,16 @@ export default function Login(props) {
         content: "登录成功",
       });
       // 跳转首页
-      navigate('/home')
+    
+      if (location.state){
+        navigate(location.state.pathfrom,{replace:true})
+     
+        
+      }else{
+        navigate('/home')
+      }
+      // navigate('/home')
+      // navigate(-1)
     },
   });
 
@@ -97,7 +112,7 @@ export default function Login(props) {
   return (
     <div className={sytles.root}>
       {/* 导航栏 */}
-      <NavBar>登录</NavBar>
+      <NavBar onLeftClick={()=>{navigate(-1)}}>登录</NavBar>
       {/* 内容 */}
       <div className="content">
         <h3>短信登录</h3>

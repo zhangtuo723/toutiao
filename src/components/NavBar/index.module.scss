@@ -35,6 +35,12 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow:ellipsis;
+        line-height: 100%;
+        // color: pink;
+     
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         
         // position: absolute;
         // right: 16px;
