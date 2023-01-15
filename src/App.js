@@ -13,6 +13,7 @@ const ProfileEdit = React.lazy(() => import("@/pages/Profile/Edit"));
 
 const Chat = React.lazy(() => import("@/pages/Profile/Chat"));
 const NotFound = React.lazy(()=>import('@/pages/NotFound'))
+const Feedback = React.lazy(()=>import('@/pages/Profile/Feedback'))
 // import Login from '@/pages/Login'
 // import Home from '@/pages/Home'
 
@@ -38,6 +39,7 @@ export default function App() {
             }
           ></Route>
           <Route path="/profile/chat" element={<AuthoRoute><Chat></Chat></AuthoRoute>}></Route>
+          <Route path='/profile/feedback' element={<AuthoRoute><Feedback></Feedback></AuthoRoute>}></Route>
           <Route path="/*" element={<NotFound></NotFound>}></Route>
 
         </Routes>
