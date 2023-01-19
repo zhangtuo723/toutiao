@@ -1,6 +1,7 @@
+
 // 用户 Token 的本地缓存键名
 const TOKEN_KEY = 'geek-itcast'
-
+const CHANNELS_KEY = 'geek-itcast-channels'
 /**
  * 从本地缓存中获取 Token 信息
  */
@@ -28,4 +29,17 @@ export const removeTokenInfo = () => {
  */
 export const hasToken = () => {
   return !!getTokenInfo().token
+}
+
+
+export const seLocalChannels = (channels)=>{
+  localStorage.setItem(CHANNELS_KEY,JSON.stringify(channels))
+}
+
+export const getLocalChannels = ()=>{
+  return JSON.parse(localStorage.getItem(CHANNELS_KEY))
+}
+
+export const removeLocalChannels=()=>{
+  localStorage.removeItem(CHANNELS_KEY)
 }
