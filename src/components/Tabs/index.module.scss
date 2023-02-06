@@ -13,7 +13,9 @@
       height: 100%;
     }
     .tabs-wrap {
-      position: relative;
+      // position: relative;
+      position: fixed;
+       background-color: white;
       z-index: 1;
       height: 44px;
       overflow: hidden;
@@ -22,6 +24,7 @@
     }
     .tabs-nav {
       position: relative;
+     
       display: flex;
       height: 100%;
       overflow-x: auto;
@@ -71,7 +74,12 @@
     .tabs-content {
       flex: 1;
       padding-bottom: 50px;
+      padding-top: 50px;
       overflow: hidden;
+      .tabs-content-wrap{
+        overflow-y: auto;
+        height: 100vh;
+      }
 
       .tab-pane {
         height: 100%;

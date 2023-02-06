@@ -7,6 +7,7 @@ import Icon from "@/components/icon";
 import { Popup } from "antd-mobile";
 import Channels from './component/Channels'
 import ArticleList from "./component/ArticleList";
+import MoreAction from "./component/MoreAction";
 export default function Home() {
   const channels = useSelector((state) => state.home.userChannels);
   const dispatch = useDispatch();
@@ -22,7 +23,15 @@ export default function Home() {
   const [active,setActive] = useState(0)
   return (
     <div className={styles.root}>
-      <Tabs tabs={channels} index={active} onChange={(id)=>{setActive(id)}}>
+      <Tabs tabs={channels} index={active} onChange={(id)=>{
+        setActive(id) 
+        // dispatch(setMoreAction({
+        //   visible:false,
+        //   articleId:'',
+        //   channelId:channels[id].id
+        // }))
+      }}
+        >
         {/* 放对应数量的articlelist */}
         {
           channels.map((item)=><ArticleList key={item.id} channelId={item.id}></ArticleList>)
@@ -47,6 +56,7 @@ export default function Home() {
       >
         <Channels active={active} onClose={onClose} onChange={(id)=>{setActive(id)}}></Channels>
       </Popup>
+      <MoreAction></MoreAction>
     </div>
   );
 }

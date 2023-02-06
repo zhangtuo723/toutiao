@@ -2,10 +2,12 @@ import "dayjs/locale/zh-cn";
 import classnames from "classnames";
 
 import Icon from "@/components/icon";
-
+import Image from "../Img";
 import styles from "./index.module.scss";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import { useDispatch, useSelector } from "react-redux";
+import { setMoreAction } from "@/store/action/home";
 
 dayjs.locale("zh-cn");
 dayjs.extend(relativeTime);
@@ -19,12 +21,13 @@ dayjs.extend(relativeTime);
 //   type: 0 | 1 | 3
 // }
 
-const ArticleItem = ({ article }) => {
+const ArticleItem = ({ article,ch_id }) => {
   // console.log(article);
   const {
     cover: { type, images },
   } = article;
-
+  const isLogin = useSelector((state) => !!state.login.token);
+  const dispatch = useDispatch();
   return (
     <div className={styles.root}>
       <div
@@ -39,7 +42,8 @@ const ArticleItem = ({ article }) => {
           <div className="article-imgs">
             {images.map((item, i) => (
               <div key={i} className="article-img-wrapper">
-                <img src={item} alt="" />
+                {/* <img src={item} alt="" /> */}
+                <Image src={item} alt=""></Image>
               </div>
             ))}
           </div>
@@ -49,9 +53,23 @@ const ArticleItem = ({ article }) => {
         <span>{article.aut_name}</span>
         <span>{article.comm_count}</span>
         <span>{dayjs(article.pubdate).fromNow(true)}</span>
-        <span className="close">
-          <Icon type="iconbtn_essay_close" />
-        </span>
+
+        {isLogin && (
+          <span className="close">
+            <Icon
+              type="iconbtn_essay_close"
+              onClick={() => {
+                dispatch(
+                  setMoreAction({
+                    visible: true,
+                    articleId: article.art_id,
+                    cahnnelId:ch_id
+                  })
+                );
+              }}
+            />
+          </span>
+        )}
       </div>
     </div>
   );

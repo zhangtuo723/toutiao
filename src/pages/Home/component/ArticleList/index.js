@@ -24,21 +24,37 @@ export default function ArticleList({ channelId, activeId }) {
   if (!current) return null;
 
   const onRefresh = async ()=>{
+    
     await dispatch(getArticleList(channelId, Date.now()));
+    setHasMore(true)
     
   }
 
 
 
-  const loadMore=()=>{
+  const loadMore= async ()=>{
     
     
     if(loading) return
     setLoading(true)
+
+    if(!current.timestamp){
+      setHasMore(false)
+      setLoading(false)
+      return
+    }
+    
+    try {
+      await dispatch(getArticleList(channelId,current.timestamp,true))
+    }
+    finally{
+      setLoading(false)
+    }
+
     
 
-
-    console.log('正在加载1');
+    
+    // console.log('正在加载1');
     
   }
 
@@ -48,7 +64,7 @@ export default function ArticleList({ channelId, activeId }) {
         <PullToRefresh onRefresh={onRefresh}>
           {current.list.map((item) => (
             <div className="article-item" key={item.art_id}>
-              <ArticleItem article={item}></ArticleItem>
+              <ArticleItem ch_id={channelId} article={item}></ArticleItem>
             </div>
           ))}
         </PullToRefresh>
