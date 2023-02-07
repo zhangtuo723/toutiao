@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { Toast } from "antd-mobile";
 import { getTokenInfo, setTokenInfo } from "./storage";
 import history from "@/history";
@@ -13,7 +13,7 @@ const http = axios.create({
 });
 
 // 2. 设置请求拦截器和响应拦截器
-http.interceptors.request.use((config) => {
+http.interceptors.request.use((config:any ) => {
   const token = getTokenInfo().token;
   if (token) {
     config.headers["Authorization"] = "Bearer " + token;
@@ -26,9 +26,9 @@ http.interceptors.response.use(
   (response) => {
     return response.data;
   },
-  async (error) => {
+  async (error:AxiosError<{message:string}>) => {
     // console.log(error);
-
+    
     
     if(!error.response){
       Toast.show({
@@ -67,7 +67,8 @@ http.interceptors.response.use(
       setTokenInfo(tokenInfo)
       // token 刷新后需要重新发送一次之前的请求 error里面的config 就是请求的参数
       // 这时候就不返回错误了
-      return http(error.config)
+      
+      return http(error.config!)
 
 
     } catch (error) {

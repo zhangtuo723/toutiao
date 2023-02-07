@@ -5,11 +5,14 @@ import { useState, useRef } from 'react'
 import Icon from '../icon'
 
 import styles from './index.module.scss'
-
-const Image = memo(({ src, className }) => {
+type Props = {
+  className?:string
+  src:string
+}
+const Image = memo(({ src, className }:Props) => {
   const [isError, setIsError] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
-  const imgRef = useRef(null)
+  const imgRef = useRef<HTMLImageElement>(null)
 
   // 图片加载完成
   const onLoad = () => {
@@ -59,11 +62,12 @@ const Image = memo(({ src, className }) => {
   // 图片懒加载
   useEffect(() => {
     const imageObserver = new IntersectionObserver(
+
       (entries, imgObserver) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            const lazyImage = entry.target
-            lazyImage.src = lazyImage.dataset.src
+            const lazyImage = entry.target as HTMLImageElement
+            lazyImage.src= lazyImage.dataset.src!
           }
         })
       }
@@ -77,7 +81,7 @@ const Image = memo(({ src, className }) => {
       // }
     )
 
-    imageObserver.observe(imgRef.current)
+    imageObserver.observe(imgRef.current!)
 
     return () => imageObserver.disconnect()
   }, [])

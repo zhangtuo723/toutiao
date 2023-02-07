@@ -6,11 +6,13 @@ type Token = {
   token: string;
   refresh_token: string;
 };
+
+type Channels = { id: number; name: string }[];
 /**
  * 从本地缓存中获取 Token 信息
  */
 export const getTokenInfo = () => {
-  return JSON.parse(localStorage.getItem(TOKEN_KEY) || '{}');
+  return JSON.parse(localStorage.getItem(TOKEN_KEY) || "{}");
 };
 
 /**
@@ -35,14 +37,13 @@ export const hasToken = () => {
   return !!getTokenInfo().token;
 };
 
-export const seLocalChannels = (channels:Object[]) => {
+export const seLocalChannels = (channels: Channels) => {
   localStorage.setItem(CHANNELS_KEY, JSON.stringify(channels));
 };
 
-export const getLocalChannels = ():Token=> {
+export const getLocalChannels = (): Token => {
   return JSON.parse(localStorage.getItem(CHANNELS_KEY) as string);
 };
-
 
 export const removeLocalChannels = () => {
   localStorage.removeItem(CHANNELS_KEY);
