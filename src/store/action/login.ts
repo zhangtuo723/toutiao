@@ -1,7 +1,9 @@
 import request from '@/utils/request'
 import {setTokenInfo} from '@/utils/storage'
-export const sendCode = (mobile)=>{
-    return async (dispatch)=>{
+import {Dispatch } from 'redux'
+
+export const sendCode = (mobile:string) =>{
+    return async (dispatch:Dispatch)=>{
          await request({
             url:"/sms/codes/"+mobile,
             method:'get'
@@ -10,7 +12,7 @@ export const sendCode = (mobile)=>{
 }
 
 
-export const saveToken = (payload)=>{
+export const saveToken = (payload:any)=>{
     return {
         type:'login/token',
         payload
@@ -18,9 +20,9 @@ export const saveToken = (payload)=>{
 }
 
 
-export const login = (mobile,code)=>{
+export const login = (mobile:string,code:string):any=>{
 
-    return async (dispatch)=>{
+    return async (dispatch:Dispatch)=>{
         const res =  await request({
             url:'/authorizations',
             method:'post',

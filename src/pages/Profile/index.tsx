@@ -1,5 +1,8 @@
 import Icon from '@/components/icon'
+import { RootState } from '@/store'
 import { getUser } from '@/store/action/profile'
+// import { User } from '@/store/reducer/profile'
+// import { User } from '@/store/reducer/profile'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
@@ -7,8 +10,8 @@ import styles from './index.module.scss'
 
 const Profile = () => {
   const navigate = useNavigate()
-  const dispatch = useDispatch()
-  const user = useSelector(state=>state.profile.user)
+  const dispatch:any = useDispatch()
+  const user = useSelector((state:RootState)=>state.profile.user) 
   useEffect(()=>{
     
     dispatch(getUser())
@@ -21,7 +24,9 @@ const Profile = () => {
         <div className="user-info">
           <div className="avatar">
             <img src={user.photo} alt="" />
+            
           </div>
+          
           <div className="user-name">{user.name}</div>
           <Link to="/profile/edit">
             个人信息 <Icon type="iconbtn_right" />

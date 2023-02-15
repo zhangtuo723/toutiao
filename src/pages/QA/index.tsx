@@ -11,6 +11,11 @@
 //   user!.name
 // }
 
+// const fun = (n1:number):number => {
+//   return n1
+// }
+
+// type res = ReturnType<typeof fun>
 
 const Question = () => {
   return (<div>

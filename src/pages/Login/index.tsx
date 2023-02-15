@@ -26,12 +26,17 @@ import { Toast } from "antd-mobile";
 //   return errors;
 // };
 import { useDispatch } from "react-redux";
+
 import { login, sendCode } from "@/store/action/login";
 import { useLocation, useNavigate } from "react-router-dom";
 
-export default function Login(props) {
+
+
+
+
+export default function Login() {
   const [time, setTime] = useState(0);
-  const dispatch = useDispatch();
+  const dispatch:any = useDispatch(); //不知道怎么搞 这里配合ts貌似要重构uesDispatch
   const navigate = useNavigate();
   const location = useLocation()
 
