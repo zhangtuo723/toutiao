@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+# 极客园项目后台
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+本项目是一个开源项目，后端接口文档由黑马提供。供开发学习使用。
 
-## Available Scripts
+pc文档:http://geek.itheima.net/api-pc.html
 
-In the project directory, you can run:
+移动端文档:http://geek.itheima.net/api.html
 
-### `npm start`
+> > 技术栈 react antd 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 登录
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+通过token 技术实现登录和身份验证。前端将用户名和密码发送给后端，后端生成token返回前端。之后的前端请求都将token放在请求头。
 
-### `npm test`
+前端登录界面：
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![1682834909380](assets/1682834909380.png)
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 后台概览页面
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+登录成功后进入后台概览页面，相当于一个统计界面。
 
-### `npm run eject`
+![1682835043586](assets/1682835043586.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 内容管理界面
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+对文章的管理界面，可以筛选，修改，删除。
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+![1682835110431](assets/1682835110431.png)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 文章发布界面
 
-## Learn More
+可以在这个页面对文章进行编辑和发布
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![1682835225527](assets/1682835225527.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# 极客园项目h5移动端
 
-### Code Splitting
+> > 技术栈 react + antd mobile + redux
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 移动登录页面
 
-### Analyzing the Bundle Size
+![1682836184343](assets/1682836184343.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+登录成功后跳转首页，进入推荐页面。
 
-### Making a Progressive Web App
+## 文章首页
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+![1682836282644](assets/1682836282644.png)
 
-### Advanced Configuration
+可以对上方频道进行编辑。
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+![1682836338565](assets/1682836338565.png)
 
-### Deployment
+## 文章详情页面
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+![1682836972898](assets/1682836972898.png)
 
-### `npm run build` fails to minify
+## 个人信息页面
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![1682836404179](assets/1682836404179.png)
+
+## 修改人信息页面
+
+![1682836451838](assets/1682836451838.png)
+
+## 用户反馈页面
+
+![1682836505915](assets/1682836505915.png)
+
+## 智能聊天机器人页面
+
+![1682836600403](assets/1682836600403.png)
